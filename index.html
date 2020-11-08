@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
-    <script src="luxon.js"></script>
+    <script src="moment.js"></script>
 
     <title>Weather Dashboard</title>
 </head>
@@ -51,16 +51,21 @@
         
     <!--right container with city's today temp and 5-D forecast-->
     <div id="right-container" class="float-right m-3">
+        <div class="today-container my-3 ml-3 border rounded">
             <h2 class="city-date">
                 <span id="current-city"></span>
-                <span class="date">11/7/2020</span>
+                <span class="date"></span>
                 <img class="icon">
             </h2>
             <h4 class="temp"></h4>
+            <h4 class="feels"></h4>
             <h4 class="humidity"></h4>
             <h4 class="wind"></h4>
-
-        <div id="forcast-contianer"></div>
+            <h4 class="uvCond"></h4>
+        </div>      
+        <div id="forcast-contianer">
+            <h2>5-Day Forecast</h2>
+        </div>
     </div>
     
 </body>
