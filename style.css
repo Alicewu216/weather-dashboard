@@ -1,3 +1,19 @@
-#citySearchDiv {
-    widows: 200px;
+#left-container {
+    width: 30%;
+}
+.row {
+    margin: 10px;
+}
+#city-input{
+    
+}
+#search-btn {
+    margin: 0px;
+}
+.new-city-searched {
+    padding: 15px;
+    font-size: 25px;
+}
+#right-container {
+    width: 65%;
 }
