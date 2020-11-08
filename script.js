@@ -21,9 +21,9 @@ $(document).ready(function () {
     //call todayWeather function to display today's weather in today-weather-container div
     todayWeather();
     forecastWeather();
+    clickcities();
   });
 
-  //$(".new-city-searched")
   //function that add the most recently searched cities to the cities-searched div
   function addSearchCity() {
     $("#cities-searched").empty();
@@ -72,6 +72,7 @@ $(document).ready(function () {
     });
   }
   function forecastWeather() {
+    $("#forcast-contianer").empty();
     $.ajax({
       url:
         "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -81,6 +82,7 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       console.log(response);
+      var dayCount = 1;
       for (var i = 0; i < response.list.length; i++) {
         if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
           var b = $("<div>");
@@ -92,7 +94,7 @@ $(document).ready(function () {
           b.append("<h5 class='temp-fore'></h5>");
           b.append("<h5 class='hum-fore'></h5>");
           $("#forcast-contianer").append(b);
-          //$(".date-fore").text(moment().add(day, 'day').format("l"));
+          $(".date-fore").text(moment().add(dayCount, "day").format("l"));
           var iconFore =
             "http://openweathermap.org/img/wn/" +
             response.list[i].weather[0].icon +
@@ -107,8 +109,19 @@ $(document).ready(function () {
               " \u00B0F"
           );
           $(".hum-fore").text(response.list[i].main.humidity + "%");
+          dayCount += 1;
         }
       }
     });
+  }
+  function clickcities() {
+    var clickCity = document.querySelectorAll(".new-city-searched");
+    for (var j = 0; j < clickCity.length; j++) {
+      clickCity[j].addEventListener("click", function (addEventListener) {
+        newCity = event.target.textContent;
+        todayWeather();
+        forecastWeather();
+      });
+    }
   }
 });
