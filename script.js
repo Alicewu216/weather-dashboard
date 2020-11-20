@@ -23,7 +23,6 @@ $(document).ready(function () {
     $("#right-container").removeClass("hide");
     forecastWeather();
     clickcities();
-    
   });
 
   //function that add the most recently searched cities to the cities-searched div
